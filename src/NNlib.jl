@@ -3,11 +3,10 @@ module NNlib
 using Pkg
 using Requires
 using ChainRulesCore
-import ChainRulesCore: rrule
+import ChainRulesCore: rrule, @ignore_derivatives
 using Base.Broadcast: broadcasted
 using Base.Threads
 using Statistics
-using Statistics: mean
 using LinearAlgebra
 using LinearAlgebra: BlasFloat, Transpose, Adjoint, AdjOrTransAbsMat
 using LinearAlgebra.BLAS: BlasInt, @blasfunc
@@ -85,6 +84,7 @@ include("scatter.jl")
 include("utils.jl")
 include("sampling.jl")
 include("functions.jl")
+include("normalization.jl")
 
 ## Include implementations
 include("impl/padding_edges.jl")

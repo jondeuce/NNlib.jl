@@ -54,3 +54,15 @@ function reverse_indices(idx::AbstractArray{<:Any,N}) where N
 end
 
 unsqueeze(x) = reshape(x, 1, size(x)...) 
+
+# This is a terrible hack to prevent the spread of type instabilities
+# when the pullback type changes depending on runtime information,
+# e.g. when a normalization layer is "active" vs "inactive".
+function _rrule_pullback_rt(@nospecialize(fn), args...)
+    rt = Base.promote_op(rrule, typeof(fn), map(typeof, args)...)
+    rt <: Tuple{<:Any,<:Any} && return rt.parameters[2]
+    return rt
+end
+
+# Extracted from Flux. Should this have a docstring and/or be in the docs?
+ofeltype(x, y) = convert(float(eltype(x)), y)

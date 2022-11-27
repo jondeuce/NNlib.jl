@@ -95,4 +95,8 @@ include("test_utils.jl")
     @testset "Functions" begin
         include("functions.jl")
     end
+
+    @testset "Normalization" begin
+        include("normalization.jl")
+    end
 end
