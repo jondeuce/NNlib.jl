@@ -63,7 +63,7 @@ pad_zeros
 
 ## Convolution
 
-`Flux`'s `Conv` and `CrossCor` layers use `NNlib.DenseConvDims` and `NNlib.conv` internally. 
+`Flux`'s `Conv` and `CrossCor` layers use `NNlib.DenseConvDims` and `NNlib.conv` internally.
 
 ```@docs
 conv
@@ -73,6 +73,22 @@ DepthwiseConvDims
 DenseConvDims
 unfold
 fold
+```
+
+## Normalization
+
+These roughly correspond to Flux's `*Norm` layers.
+<!-- `Flux`'s `*Norm` layers use `NNlib.*norm` and helper functionality such as `NNlib.RunningStats` internally. -->
+
+```@docs
+NNlib.layernorm
+NNlib.batchnorm
+NNlib.instancenorm
+NNlib.groupnorm
+NNlib.norm_stats
+NNlib.norm_helper
+NNlib.RunningStats
+NNlib.update_running_stats!
 ```
 
 ## Upsampling
